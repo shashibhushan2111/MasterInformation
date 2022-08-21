@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MasterInformation.Models.tblUserDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hobby)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tblCity.CityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblCountry.CountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblState.StateName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            <img src="@Url.Content(item.Image)" height="50" width="50"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hobby)
+        </td>
+        @*<td>  
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.tblCity.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblCountry.CountryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblState.StateName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+</table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    debugger
+    $('img').on("error", function () {
+        $(this).attr('src', '/Images/Default.jpg');
+    });
+</script>
